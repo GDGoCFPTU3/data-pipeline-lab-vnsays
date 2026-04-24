@@ -1,4 +1,5 @@
-from pydantic import BaseModel, Field
+from pydantic import BaseModel
+from typing import Optional
 
 # ==========================================
 # ROLE 1: LEAD DATA ARCHITECT
@@ -6,8 +7,12 @@ from pydantic import BaseModel, Field
 
 class UnifiedDocument(BaseModel):
     """
-    Hệ thống cần 6 trường thông tin chuẩn (document_id, source_type, author, category, content, timestamp). 
-    TODO: Khai báo các trường với kiểu dữ liệu str ở dưới.
+    Hợp đồng dữ liệu chuẩn cho toàn bộ pipeline.
+    Cả PDF lẫn Video đều phải map vào schema này.
     """
-    # Khai báo các trường ở đây...
-    pass
+    document_id: str
+    source_type: str
+    author: Optional[str] = "Unknown"
+    category: str
+    content: str
+    timestamp: str
